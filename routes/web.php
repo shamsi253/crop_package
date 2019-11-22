@@ -9,21 +9,21 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 use Crop\Jcrop\Artistimagecrop;
 
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('artistimage', function() {
+Route::get('artistimage/{$file}/{$file_id}', function () {
     $artist = new Artistimagecrop();
-    return $artist->imageArtistModification();
+    return $artist->imageArtistModification($file, $file_id);
 });
-Route::get('imagejcrop', function() {
+Route::get('imagejcrop/{$request}', function () {
     $image = new Artistimagecrop();
-    return $image->imageArtistModification();
+    return $image->imageCropManually($request);
 });
-Route::get('posterimage', function() {
+Route::get('posterimage/{$file}/{$file_id}', function () {
     $poster = new Artistimagecrop();
-    return $poster->imageArtistModification();
+    return $poster->imagePosterModification($file, $file_id);
 });
